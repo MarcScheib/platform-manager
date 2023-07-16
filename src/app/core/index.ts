@@ -1,0 +1,1 @@
+export { getRequirements } from './requirements';

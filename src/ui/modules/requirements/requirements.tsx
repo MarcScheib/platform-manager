@@ -1,11 +1,11 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { CommonAPI } from '../../electron-api/common';
+import { RequirementsResourceImpl } from '../../tip-manager-api/requirements';
 
 export default function Requirements() {
   const getRequirements = async () => {
-    const requirements = await new CommonAPI().getRequirements();
-    setRequirements(requirements.map(requirement => requirement.stdout));
+    const requirements = await new RequirementsResourceImpl().getRequirements();
+    setRequirements(requirements.map(requirement => requirement.message));
   };
 
   const [requirements, setRequirements] = useState<string[]>([]);

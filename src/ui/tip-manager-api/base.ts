@@ -1,13 +1,13 @@
-import { TipManagerAPI } from '../../shared/api';
+import { TipManagerResource } from '../../shared/api';
 
 declare global {
   interface Window {
-    tipmanager: TipManagerAPI;
+    tipmanager: TipManagerResource;
   }
 }
 
 export class BaseAPI {
-  private _base: TipManagerAPI;
+  private _base: TipManagerResource;
 
   get base() {
     return this._base;

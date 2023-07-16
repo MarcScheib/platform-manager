@@ -65,6 +65,5 @@ export function getConfig(cleanCache = false): Config {
   };
 
   config = { ...defaultConfig, ...packageConfig, ...argsConfig };
-
   return config;
 }
