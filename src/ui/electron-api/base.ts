@@ -1,21 +1,19 @@
+import { TipManagerAPI } from '../../shared/api';
+
 declare global {
   interface Window {
-    electronAPI: ElectronAPI;
+    tipmanager: TipManagerAPI;
   }
 }
 
-export interface ElectronAPI {
-  getRequirements: () => Promise<{ stdout: string; stderr: string }[]>;
-}
-
 export class BaseAPI {
-  private _base: ElectronAPI;
+  private _base: TipManagerAPI;
 
   get base() {
     return this._base;
   }
 
   constructor() {
-    this._base = window.electronAPI;
+    this._base = window.tipmanager;
   }
 }

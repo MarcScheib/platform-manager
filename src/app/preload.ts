@@ -1,5 +1,9 @@
 import { contextBridge, ipcRenderer } from 'electron';
+import { TipManagerAPI } from '../shared/api';
+import * as events from '../shared/events';
 
-contextBridge.exposeInMainWorld('electronAPI', {
-  getRequirements: () => ipcRenderer.invoke('get-requirements'),
-});
+const tipManagerAPI: TipManagerAPI = {
+  getRequirements: () => ipcRenderer.invoke(events.TIP_GET_REQUIREMENTS),
+};
+
+contextBridge.exposeInMainWorld('tipmanager', tipManagerAPI);
