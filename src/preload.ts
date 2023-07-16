@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('electronAPI', {
-  setTitle: (title: string) => ipcRenderer.send('set-title', title),
+  getRequirements: () => ipcRenderer.invoke('get-requirements'),
 });

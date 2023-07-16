@@ -1,11 +1,15 @@
 declare global {
   interface Window {
-    electronAPI: any;
+    electronAPI: ElectronAPI;
   }
 }
 
+export interface ElectronAPI {
+  getRequirements: () => Promise<{ stdout: string; stderr: string }[]>;
+}
+
 export class BaseAPI {
-  private _base: any;
+  private _base: ElectronAPI;
 
   get base() {
     return this._base;

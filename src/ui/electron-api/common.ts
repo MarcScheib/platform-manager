@@ -1,7 +1,7 @@
-import { BaseAPI } from "./base";
+import { BaseAPI } from './base';
 
 export class CommonAPI extends BaseAPI {
-  setTitle(title: string) {
-    this.base.setTitle(title);
+  async getRequirements(): Promise<{ stdout: string; stderr: string }[]> {
+    return this.base.getRequirements();
   }
 }
