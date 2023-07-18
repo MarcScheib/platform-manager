@@ -1,7 +1,11 @@
 import { createHashRouter, useRouteError } from 'react-router-dom';
+import Modules from './modules/modules/modules';
 import Overview from './modules/overview/main';
-import WorkspacesOverview from './modules/workspaces/overview';
 import Requirements from './modules/requirements/requirements';
+import Secrets from './modules/secrets/secrets';
+import Servers from './modules/servers/servers';
+import Tenants from './modules/tenants/tenants';
+import WorkspacesOverview from './modules/workspaces/overview';
 import { TipManager } from './tip-manager';
 
 export function Fallback() {
@@ -37,19 +41,19 @@ export const router = createHashRouter([
       },
       {
         path: 'modules',
-        element: <Requirements />,
+        element: <Modules />,
       },
       {
         path: 'tenants',
-        element: <Requirements />,
+        element: <Tenants />,
       },
       {
         path: 'servers',
-        element: <Requirements />,
+        element: <Servers />,
       },
       {
         path: 'secrets',
-        element: <Requirements />,
+        element: <Secrets />,
       },
       {
         index: true,
