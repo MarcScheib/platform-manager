@@ -1,12 +1,15 @@
 import ArrowRight from '@mui/icons-material/ArrowRight';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import Home from '@mui/icons-material/Home';
+import KeyIcon from '@mui/icons-material/Key';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Settings from '@mui/icons-material/Settings';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import IconButton from '@mui/material/IconButton';import GroupIcon from '@mui/icons-material/Group';
 import List from '@mui/material/List';
+import StorageIcon from '@mui/icons-material/Storage';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -18,6 +21,10 @@ import { Link } from 'react-router-dom';
 
 const data = [
   { icon: <EngineeringIcon />, label: 'Requirements', to: 'requirements' },
+  { icon: <ViewModuleIcon />, label: 'Modules', to: 'modules' },
+  { icon: <GroupIcon />, label: 'Tenants', to: 'tenants' },
+  { icon: <StorageIcon />, label: 'Servers', to: 'servers' },
+  { icon: <KeyIcon />, label: 'Secrets', to: 'secrets' },
 ];
 
 const Nav = styled(List)<{ component?: React.ElementType }>({
@@ -123,7 +130,7 @@ export function Navigation() {
           }}
         >
           <ListItemText
-            primary="Build"
+            primary="Settings"
             primaryTypographyProps={{
               fontSize: 15,
               fontWeight: 'medium',

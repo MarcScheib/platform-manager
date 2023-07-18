@@ -36,6 +36,22 @@ export const router = createHashRouter([
         element: <Requirements />,
       },
       {
+        path: 'modules',
+        element: <Requirements />,
+      },
+      {
+        path: 'tenants',
+        element: <Requirements />,
+      },
+      {
+        path: 'servers',
+        element: <Requirements />,
+      },
+      {
+        path: 'secrets',
+        element: <Requirements />,
+      },
+      {
         index: true,
         element: <Overview />,
       },
