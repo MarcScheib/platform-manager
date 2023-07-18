@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { RequirementsResourceImpl } from '../../tip-manager-api/requirements';
+import { RequirementsResourceImpl } from './requirements-service';
 
 export default function Requirements() {
   const getRequirements = async () => {

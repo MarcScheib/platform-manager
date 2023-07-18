@@ -1,36 +1,17 @@
-import EngineeringIcon from '@mui/icons-material/Engineering';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import blue from '@mui/material/colors/blue';
-import {
-  CSSObject,
-  Theme,
-  ThemeProvider,
-  createTheme,
-  styled,
-} from '@mui/material/styles';
-import { Axios } from 'axios';
+import { CSSObject, Theme, ThemeProvider, styled } from '@mui/material/styles';
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-
-const theme = createTheme({
-  palette: {
-    primary: blue,
-  },
-});
+import { Navigation } from './shell/navigation';
+import { theme } from './theme';
 
 const drawerWidth = 240;
 
@@ -73,14 +54,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export function TipManager() {
-  const loadBitBucketRepos = () => {
-    new Axios().get('https://api.bitbucket.org/2.0/repositories/').then(res => {
-      console.log(res.data);
-    });
-  };
-
   const [open, setOpen] = useState(true);
-  const toggleDrawer = () => setOpen(!open);
 
   return (
     <React.Fragment>
@@ -99,14 +73,16 @@ export function TipManager() {
                 color="inherit"
                 aria-label="menu"
                 sx={{ mr: 2 }}
-                onClick={toggleDrawer}
+                onClick={() => setOpen(!open)}
               >
                 <MenuIcon />
               </IconButton>
               <Typography
                 variant="h6"
+                color="inherit"
                 sx={{ flexGrow: 1 }}
                 component={Link}
+                style={{ textDecoration: 'none' }}
                 to={'/'}
               >
                 TIP Manager
@@ -118,38 +94,7 @@ export function TipManager() {
           <Drawer variant="permanent" open={open}>
             <Toolbar />
 
-            <List>
-              <ListItem
-                key={'Requirements'}
-                disablePadding
-                component={Link}
-                to={'requirements'}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <EngineeringIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={'Requirements'}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </List>
-
-            <Divider />
+            <Navigation />
           </Drawer>
 
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

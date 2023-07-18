@@ -20,7 +20,7 @@ const createWindow = (): void => {
     },
   });
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 app.on('ready', () => {
@@ -41,7 +41,6 @@ app.on('activate', () => {
   }
 });
 
-// Show only the error description to the user
 process.on('uncaughtException', error => {
   const { name, message } = error;
   logger.error('uncaughtException', error);

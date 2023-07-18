@@ -1,4 +1,4 @@
-import { TipManagerResource } from '../../shared/api';
+import { TipManagerResource } from '../shared/api';
 
 declare global {
   interface Window {
@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export class BaseAPI {
+export class BaseResource {
   private _base: TipManagerResource;
 
   get base() {

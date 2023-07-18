@@ -1,11 +1,11 @@
 import type {
   Requirement,
   RequirementsResource,
-} from '../../shared/types/requirements';
-import { BaseAPI } from './base';
+} from '../../../shared/types/requirements';
+import { BaseResource } from '../../base-resource';
 
 export class RequirementsResourceImpl
-  extends BaseAPI
+  extends BaseResource
   implements RequirementsResource
 {
   async getRequirements(): Promise<Requirement[]> {
