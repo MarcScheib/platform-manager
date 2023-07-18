@@ -97,7 +97,7 @@ export function TipManager() {
             <Navigation />
           </Drawer>
 
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Box component="main" sx={{ flexGrow: 1 }}>
             <Toolbar />
 
             <Outlet />
