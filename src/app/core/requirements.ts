@@ -50,5 +50,5 @@ export const getRequirements = (
     cache[windowId] = instance;
   }
 
-  return new RequirementsFacade();
+  return instance;
 };
