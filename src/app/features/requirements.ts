@@ -1,10 +1,10 @@
 import { exec } from 'child_process';
-import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { promisify } from 'util';
 import {
   Requirement,
   RequirementsResource,
 } from '../../shared/types/requirements';
+import { createGlobalState } from './base-feature-facade';
 
 const requirements = [
   'node -v',
@@ -30,25 +30,5 @@ export default class RequirementsFacade implements RequirementsResource {
   }
 }
 
-const cache: {
-  [windowId: string]: RequirementsFacade;
-} = {};
-
-export const getRequirements = (
-  e: IpcMainEvent | IpcMainInvokeEvent
-): RequirementsFacade => {
-  const sourceWindow = BrowserWindow.fromWebContents(e.sender);
-  if (!sourceWindow) {
-    throw new Error('Could not resolve current window');
-  }
-
-  const windowId = sourceWindow.id;
-
-  let instance = cache[windowId];
-  if (!instance) {
-    instance = new RequirementsFacade();
-    cache[windowId] = instance;
-  }
-
-  return instance;
-};
+export const [getRequirements] =
+  createGlobalState<RequirementsFacade>(RequirementsFacade);

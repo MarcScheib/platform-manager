@@ -1,3 +1,4 @@
+import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { BaseEntity } from '../../shared/types/base';
 import {
   createFileIfNotExisting,
@@ -47,4 +48,29 @@ export abstract class BaseFeatureFacade<T extends BaseEntity> {
   }
 
   abstract getDirectory(): string;
+}
+
+export function createGlobalState<T>(constructor: new () => T) {
+  const cache: {
+    [windowId: string]: T;
+  } = {};
+
+  const getInstance = (e: IpcMainEvent | IpcMainInvokeEvent): T => {
+    const sourceWindow = BrowserWindow.fromWebContents(e.sender);
+    if (!sourceWindow) {
+      throw new Error('Could not resolve current window');
+    }
+
+    const windowId = sourceWindow.id;
+
+    let instance = cache[windowId];
+    if (!instance) {
+      instance = new constructor();
+      cache[windowId] = instance;
+    }
+
+    return instance;
+  };
+
+  return [getInstance];
 }
