@@ -1,52 +1,15 @@
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { Server, ServersResource } from '../../shared/types/servers';
-import {
-  createFileIfNotExisting,
-  loadFromFile,
-  saveFile,
-} from '../persistence/storage';
+import { BaseFeatureFacade } from './base-feature-facade';
 
-export default class ServersFacade implements ServersResource {
+export default class ServersFacade
+  extends BaseFeatureFacade<Server>
+  implements ServersResource
+{
   static STORAGE_FILE = 'servers.json';
 
-  constructor() {
-    createFileIfNotExisting(ServersFacade.STORAGE_FILE, []);
-  }
-
-  async create(payload: Server): Promise<Server> {
-    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE)
-      .then(servers => servers.concat(payload))
-      .then(servers => saveFile(ServersFacade.STORAGE_FILE, servers))
-      .then(() => payload);
-  }
-
-  read(businessKey: string): Promise<Server>;
-  read(): Promise<Server[]>;
-  read(businessKey?: unknown): Promise<Server | Server[]> {
-    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE).then(servers =>
-      businessKey
-        ? servers.find(server => server.businessKey === businessKey)
-        : servers
-    );
-  }
-
-  update(businessKey: string, payload: Server): Promise<Server> {
-    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE)
-      .then(servers =>
-        servers.map(server =>
-          server.businessKey === businessKey ? payload : server
-        )
-      )
-      .then(servers => saveFile(ServersFacade.STORAGE_FILE, servers))
-      .then(() => payload);
-  }
-
-  delete(businessKey: string): Promise<void> {
-    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE)
-      .then(servers =>
-        servers.filter(server => server.businessKey !== businessKey)
-      )
-      .then(servers => saveFile(ServersFacade.STORAGE_FILE, servers));
+  getDirectory(): string {
+    return ServersFacade.STORAGE_FILE;
   }
 }
 
