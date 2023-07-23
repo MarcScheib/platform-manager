@@ -88,6 +88,7 @@ function CreateServer(props: {
         aria-label="submit"
         onClick={() =>
           props.onSubmit({
+            businessKey: nameRef.current.value,
             name: nameRef.current.value,
             url: urlRef.current.value,
           })
