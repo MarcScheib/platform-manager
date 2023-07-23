@@ -1,15 +1,7 @@
-export interface Tenant {
-  businessKey: string;
+import { BaseEntity, CrudResource } from './base';
+
+export interface Tenant extends BaseEntity {
+  modules: string[];
 }
 
-export interface TenantsResource {
-  create(payload: Tenant): Promise<Tenant>;
-
-  read(businessKey: string): Promise<Tenant>;
-
-  read(): Promise<Tenant[]>;
-
-  update(businessKey: string, payload: Tenant): Promise<Tenant>;
-
-  delete(businessKey: string): Promise<void>;
-}
+export type TenantsResource = CrudResource<Tenant>;

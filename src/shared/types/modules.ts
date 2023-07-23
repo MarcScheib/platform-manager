@@ -1,15 +1,7 @@
-export interface Module {
-  businessKey: string;
+import { BaseEntity, CrudResource } from './base';
+
+export interface Module extends BaseEntity {
+  repositoryUrl: string;
 }
 
-export interface ModulesResource {
-  create(payload: Module): Promise<Module>;
-
-  read(businessKey: string): Promise<Module>;
-
-  read(): Promise<Module[]>;
-
-  update(businessKey: string, payload: Module): Promise<Module>;
-
-  delete(businessKey: string): Promise<void>;
-}
+export type ModulesResource = CrudResource<Module>;
