@@ -3,7 +3,7 @@ import { existsSync, promises as fs } from 'fs';
 import path from 'path';
 
 export function getUserDir() {
-  return app.getPath('appData');
+  return path.join(app.getPath('appData'), 'entities');
 }
 
 export function fromJson<T>(content: string): T {
