@@ -3,23 +3,23 @@ import { Server, ServersResource } from '../../shared/types/servers';
 import { createFileIfNotExisting, loadFromFile, saveFile } from './storage';
 
 export default class ServersFacade implements ServersResource {
-  static SERVERS_FILE = 'servers.json';
+  static STORAGE_FILE = 'servers.json';
 
   constructor() {
-    createFileIfNotExisting(ServersFacade.SERVERS_FILE, []);
+    createFileIfNotExisting(ServersFacade.STORAGE_FILE, []);
   }
 
   async create(payload: Server): Promise<Server> {
-    return loadFromFile<Server[]>(ServersFacade.SERVERS_FILE)
+    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE)
       .then(servers => servers.concat(payload))
-      .then(servers => saveFile(ServersFacade.SERVERS_FILE, servers))
+      .then(servers => saveFile(ServersFacade.STORAGE_FILE, servers))
       .then(() => payload);
   }
 
   read(businessKey: string): Promise<Server>;
   read(): Promise<Server[]>;
   read(businessKey?: unknown): Promise<Server | Server[]> {
-    return loadFromFile<Server[]>(ServersFacade.SERVERS_FILE).then(servers =>
+    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE).then(servers =>
       businessKey
         ? servers.find(server => server.businessKey === businessKey)
         : servers
@@ -27,22 +27,22 @@ export default class ServersFacade implements ServersResource {
   }
 
   update(businessKey: string, payload: Server): Promise<Server> {
-    return loadFromFile<Server[]>(ServersFacade.SERVERS_FILE)
+    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE)
       .then(servers =>
         servers.map(server =>
           server.businessKey === businessKey ? payload : server
         )
       )
-      .then(servers => saveFile(ServersFacade.SERVERS_FILE, servers))
+      .then(servers => saveFile(ServersFacade.STORAGE_FILE, servers))
       .then(() => payload);
   }
 
   delete(businessKey: string): Promise<void> {
-    return loadFromFile<Server[]>(ServersFacade.SERVERS_FILE)
+    return loadFromFile<Server[]>(ServersFacade.STORAGE_FILE)
       .then(servers =>
         servers.filter(server => server.businessKey !== businessKey)
       )
-      .then(servers => saveFile(ServersFacade.SERVERS_FILE, servers));
+      .then(servers => saveFile(ServersFacade.STORAGE_FILE, servers));
   }
 }
 
