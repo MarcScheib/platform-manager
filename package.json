@@ -13,8 +13,7 @@
   },
   "keywords": [],
   "author": {
-    "name": "Marc Scheib",
-    "email": "marc.scheib@tech11.com"
+    "name": "Marc Scheib"
   },
   "license": "MIT",
   "devDependencies": {
