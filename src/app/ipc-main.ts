@@ -5,11 +5,14 @@ import { Secret } from '../shared/types/secrets';
 import { Server } from '../shared/types/servers';
 import { Tenant } from '../shared/types/tenants';
 import { Workspace } from '../shared/types/workspaces';
-import { getRequirements, getServers } from './core';
-import { getModules } from './core/modules';
-import { getSecrets } from './core/secrets';
-import { getTenants } from './core/tenants';
-import { getWorkspaces } from './core/workspaces';
+import {
+  getModules,
+  getRequirements,
+  getSecrets,
+  getServers,
+  getTenants,
+  getWorkspaces,
+} from './features';
 
 function registerModulessIPCMainHandlers() {
   ipcMain.handle(

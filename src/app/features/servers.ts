@@ -1,6 +1,10 @@
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { Server, ServersResource } from '../../shared/types/servers';
-import { createFileIfNotExisting, loadFromFile, saveFile } from './storage';
+import {
+  createFileIfNotExisting,
+  loadFromFile,
+  saveFile,
+} from '../persistence/storage';
 
 export default class ServersFacade implements ServersResource {
   static STORAGE_FILE = 'servers.json';

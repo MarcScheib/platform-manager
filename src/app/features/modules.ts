@@ -1,6 +1,10 @@
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { Module, ModulesResource } from '../../shared/types/modules';
-import { createFileIfNotExisting, loadFromFile, saveFile } from './storage';
+import {
+  createFileIfNotExisting,
+  loadFromFile,
+  saveFile,
+} from '../persistence/storage';
 
 export default class ModulesFacade implements ModulesResource {
   static STORAGE_FILE = 'modules.json';

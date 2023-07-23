@@ -1,6 +1,10 @@
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { Tenant, TenantsResource } from '../../shared/types/tenants';
-import { createFileIfNotExisting, loadFromFile, saveFile } from './storage';
+import {
+  createFileIfNotExisting,
+  loadFromFile,
+  saveFile,
+} from '../persistence/storage';
 
 export default class TenantsFacade implements TenantsResource {
   static STORAGE_FILE = 'tenants.json';

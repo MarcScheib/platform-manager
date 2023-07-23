@@ -1,6 +1,10 @@
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent } from 'electron';
 import { Secret, SecretsResource } from '../../shared/types/secrets';
-import { createFileIfNotExisting, loadFromFile, saveFile } from './storage';
+import {
+  createFileIfNotExisting,
+  loadFromFile,
+  saveFile,
+} from '../persistence/storage';
 
 export default class SecretsFacade implements SecretsResource {
   static STORAGE_FILE = 'secrets.json';

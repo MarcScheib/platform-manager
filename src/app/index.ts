@@ -1,6 +1,6 @@
 import { BrowserWindow, app, dialog } from 'electron';
+import createLogger from './core/logger';
 import { registerIPCMainHandlers } from './ipc-main';
-import createLogger from './logger';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
