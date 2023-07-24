@@ -2,7 +2,7 @@
   "name": "platform-manager",
   "productName": "platform-manager",
   "version": "0.1.0",
-  "description": "My Electron application description",
+  "description": "Platform manager for microservice development",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -11,11 +11,27 @@
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "forge",
+    "typescript",
+    "react",
+    "microservice",
+    "platform",
+    "manager"
+  ],
   "author": {
     "name": "Marc Scheib"
   },
+  "homepage": "https://github.com/MarcScheib/platform-manager#readme",
+  "bugs": {
+    "url": "https://github.com/MarcScheib/platform-manager/issues"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarcScheib/platform-manager.git"
+  },
   "devDependencies": {
     "@electron-forge/cli": "^6.2.1",
     "@electron-forge/maker-deb": "^6.2.1",
