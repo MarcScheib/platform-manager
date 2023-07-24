@@ -1,6 +1,7 @@
 import { BrowserWindow, app, dialog } from 'electron';
 import createLogger from './core/logger';
 import { registerIPCMainHandlers } from './ipc-main';
+import updateElectronApp from 'update-electron-app';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -10,6 +11,8 @@ const logger = createLogger('app');
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
+
+updateElectronApp();
 
 const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
