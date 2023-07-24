@@ -15,11 +15,16 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 768,
     width: 1024,
+    show: false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    mainWindow.focus();
+  });
   // mainWindow.webContents.openDevTools();
 };
 
