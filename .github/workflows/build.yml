@@ -1,0 +1,42 @@
+name: Build
+
+on:
+    push:
+      branches:
+        - develop
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+
+        env:
+            node-version: 18
+
+        steps:
+            - name: Checkout [${{ github.head_ref || github.ref_name }}]
+              uses: actions/checkout@v3
+              with:
+                fetch-depth: 0
+      
+            - name: Cache node modules
+              uses: actions/cache@v3
+              env:
+                cache-name: cache-node-modules
+              with:
+                path: ~/.npm
+                key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                restore-keys: |
+                  ${{ runner.os }}-build-${{ env.cache-name }}-
+                  ${{ runner.os }}-build-
+                  ${{ runner.os }}-
+      
+            - name: Setup Node.js [${{ env.node-version }}]
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{ env.node-version }}
+
+            - name: Install Dependencies
+              run: npm i --prefer-offline --no-audit --force
+            
+            - name: Lint
+              run: npm run lint
