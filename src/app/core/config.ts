@@ -30,15 +30,6 @@ export function getConfig(cleanCache = false): Config {
   // but if that is not defined then use --dev arg
   const isDev = process.env.NODE_ENV !== 'production' || argsConfig.devMode;
 
-  const defaultConfig = {
-    log: {
-      console: isDev,
-      file: false,
-      level: process.env.DEBUG ? 'debug' : 'error',
-      path: path.resolve(__dirname),
-    },
-  };
-
-  config = { ...defaultConfig, ...packageConfig, ...argsConfig };
+  config = { isDev, ...packageConfig, ...argsConfig };
   return config;
 }
