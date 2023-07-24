@@ -1,7 +1,7 @@
 {
   "name": "platform-manager",
   "productName": "platform-manager",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -24,6 +24,7 @@
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
     "@electron-forge/plugin-webpack": "^6.2.1",
+    "@electron-forge/publisher-github": "^6.2.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
