@@ -2,15 +2,16 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
+import { Requirement } from '../../../shared/types/requirements';
 import { RequirementsResourceImpl } from './requirements-service';
 
 export default function Requirements() {
   const getRequirements = async () => {
     const requirements = await new RequirementsResourceImpl().getRequirements();
-    setRequirements(requirements.map(requirement => requirement.message));
+    setRequirements(requirements);
   };
 
-  const [requirements, setRequirements] = useState<string[]>([]);
+  const [requirements, setRequirements] = useState<Requirement[]>([]);
 
   return (
     <React.Fragment>
@@ -29,8 +30,10 @@ export default function Requirements() {
         </Button>
       </Box>
       <ul>
-        {requirements.map((requirement, index) => (
-          <li key={index}>{requirement}</li>
+        {requirements.map(({ message, name }, index) => (
+          <li key={index}>
+            {name}: {message}
+          </li>
         ))}
       </ul>
     </React.Fragment>

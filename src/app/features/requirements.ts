@@ -7,23 +7,43 @@ import {
 import { createGlobalState } from './base-feature-facade';
 
 const requirements = [
-  'node -v',
-  'npm -v',
-  'mvn --version',
-  'java -version',
-  'git --version',
+  { cmd: 'node -v' },
+  { cmd: 'npm -v' },
+  { cmd: 'mvn --version' },
+  { cmd: 'java -version' },
+  {
+    cmd: 'git --version',
+    parser: (output: string) => output.trim().split(' ').reverse()[0],
+  },
+  {
+    cmd: 'docker --version',
+  },
+  {
+    cmd: 'docker compose version',
+  },
 ];
 const execPromise = promisify(exec);
+
+function transformMessage(
+  stdout: string,
+  stderr: string,
+  parser?: (output: string) => string
+) {
+  if (stdout) {
+    return parser ? parser(stdout) : stdout;
+  }
+  return stderr;
+}
 
 export default class RequirementsFacade implements RequirementsResource {
   async getRequirements(): Promise<Requirement[]> {
     return Promise.all(
-      requirements.map(requirement =>
-        execPromise(requirement).then(({ stdout, stderr }) => ({
-          name: requirement,
-          cmd: requirement,
+      requirements.map(({ cmd, parser }) =>
+        execPromise(cmd).then(({ stdout, stderr }) => ({
+          name: cmd,
+          cmd: cmd,
           state: stdout ? ('ok' as const) : ('error' as const),
-          message: stdout || stderr,
+          message: transformMessage(stdout, stderr, parser),
         }))
       )
     );
