@@ -44,4 +44,4 @@ jobs:
       - name: Publish
         run: npm run publish
         env:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT_FOR_ACTIONS_TOKEN }}
