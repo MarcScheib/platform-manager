@@ -16,49 +16,49 @@ import {
 
 function registerModulessIPCMainHandlers() {
   ipcMain.handle(
-    events.TIP_MODULES_CREATE,
+    events.EVT_MODULES_CREATE,
     (e: IpcMainInvokeEvent, payload: Module) => getModules(e).create(payload)
   );
   ipcMain.handle(
-    events.TIP_MODULES_READ,
+    events.EVT_MODULES_READ,
     (e: IpcMainInvokeEvent, businessKey?: string) =>
       getModules(e).read(businessKey)
   );
   ipcMain.handle(
-    events.TIP_MODULES_UPDATE,
+    events.EVT_MODULES_UPDATE,
     (e: IpcMainInvokeEvent, businessKey: string, payload: Module) =>
       getModules(e).update(businessKey, payload)
   );
   ipcMain.handle(
-    events.TIP_MODULES_DELETE,
+    events.EVT_MODULES_DELETE,
     (e: IpcMainInvokeEvent, businessKey: string) =>
       getModules(e).delete(businessKey)
   );
 }
 
 function registerRequirementsIPCMainHandlers() {
-  ipcMain.handle(events.TIP_REQUIREMENTS_GET, (e: IpcMainInvokeEvent) =>
+  ipcMain.handle(events.EVT_REQUIREMENTS_GET, (e: IpcMainInvokeEvent) =>
     getRequirements(e).getRequirements()
   );
 }
 
 function registerSecretsIPCMainHandlers() {
   ipcMain.handle(
-    events.TIP_SECRETS_CREATE,
+    events.EVT_SECRETS_CREATE,
     (e: IpcMainInvokeEvent, payload: Secret) => getSecrets(e).create(payload)
   );
   ipcMain.handle(
-    events.TIP_SECRETS_READ,
+    events.EVT_SECRETS_READ,
     (e: IpcMainInvokeEvent, businessKey?: string) =>
       getSecrets(e).read(businessKey)
   );
   ipcMain.handle(
-    events.TIP_SECRETS_UPDATE,
+    events.EVT_SECRETS_UPDATE,
     (e: IpcMainInvokeEvent, businessKey: string, payload: Secret) =>
       getSecrets(e).update(businessKey, payload)
   );
   ipcMain.handle(
-    events.TIP_SECRETS_DELETE,
+    events.EVT_SECRETS_DELETE,
     (e: IpcMainInvokeEvent, businessKey: string) =>
       getSecrets(e).delete(businessKey)
   );
@@ -66,21 +66,21 @@ function registerSecretsIPCMainHandlers() {
 
 function registerServersIPCMainHandlers() {
   ipcMain.handle(
-    events.TIP_SERVERS_CREATE,
+    events.EVT_SERVERS_CREATE,
     (e: IpcMainInvokeEvent, payload: Server) => getServers(e).create(payload)
   );
   ipcMain.handle(
-    events.TIP_SERVERS_READ,
+    events.EVT_SERVERS_READ,
     (e: IpcMainInvokeEvent, businessKey?: string) =>
       getServers(e).read(businessKey)
   );
   ipcMain.handle(
-    events.TIP_SERVERS_UPDATE,
+    events.EVT_SERVERS_UPDATE,
     (e: IpcMainInvokeEvent, businessKey: string, payload: Server) =>
       getServers(e).update(businessKey, payload)
   );
   ipcMain.handle(
-    events.TIP_SERVERS_DELETE,
+    events.EVT_SERVERS_DELETE,
     (e: IpcMainInvokeEvent, businessKey: string) =>
       getServers(e).delete(businessKey)
   );
@@ -88,21 +88,21 @@ function registerServersIPCMainHandlers() {
 
 function registerTenantsIPCMainHandlers() {
   ipcMain.handle(
-    events.TIP_TENANTS_CREATE,
+    events.EVT_TENANTS_CREATE,
     (e: IpcMainInvokeEvent, payload: Tenant) => getTenants(e).create(payload)
   );
   ipcMain.handle(
-    events.TIP_TENANTS_READ,
+    events.EVT_TENANTS_READ,
     (e: IpcMainInvokeEvent, businessKey?: string) =>
       getTenants(e).read(businessKey)
   );
   ipcMain.handle(
-    events.TIP_TENANTS_UPDATE,
+    events.EVT_TENANTS_UPDATE,
     (e: IpcMainInvokeEvent, businessKey: string, payload: Tenant) =>
       getTenants(e).update(businessKey, payload)
   );
   ipcMain.handle(
-    events.TIP_TENANTS_DELETE,
+    events.EVT_TENANTS_DELETE,
     (e: IpcMainInvokeEvent, businessKey: string) =>
       getTenants(e).delete(businessKey)
   );
@@ -110,22 +110,22 @@ function registerTenantsIPCMainHandlers() {
 
 function registerWorkspacesIPCMainHandlers() {
   ipcMain.handle(
-    events.TIP_WORKSPACES_CREATE,
+    events.EVT_WORKSPACES_CREATE,
     (e: IpcMainInvokeEvent, payload: Workspace) =>
       getWorkspaces(e).create(payload)
   );
   ipcMain.handle(
-    events.TIP_WORKSPACES_READ,
+    events.EVT_WORKSPACES_READ,
     (e: IpcMainInvokeEvent, businessKey?: string) =>
       getWorkspaces(e).read(businessKey)
   );
   ipcMain.handle(
-    events.TIP_WORKSPACES_UPDATE,
+    events.EVT_WORKSPACES_UPDATE,
     (e: IpcMainInvokeEvent, businessKey: string, payload: Workspace) =>
       getWorkspaces(e).update(businessKey, payload)
   );
   ipcMain.handle(
-    events.TIP_WORKSPACES_DELETE,
+    events.EVT_WORKSPACES_DELETE,
     (e: IpcMainInvokeEvent, businessKey: string) =>
       getWorkspaces(e).delete(businessKey)
   );

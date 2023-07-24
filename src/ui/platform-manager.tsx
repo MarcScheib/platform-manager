@@ -53,7 +53,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export function TipManager() {
+export function PlatformManager() {
   const [open, setOpen] = useState(true);
 
   return (
@@ -85,7 +85,7 @@ export function TipManager() {
                 style={{ textDecoration: 'none' }}
                 to={'/'}
               >
-                TIP Manager
+                Platform Manager
               </Typography>
               <Button color="inherit">Login</Button>
             </Toolbar>

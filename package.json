@@ -1,6 +1,6 @@
 {
-  "name": "tip-manager",
-  "productName": "tip-manager",
+  "name": "platform-manager",
+  "productName": "platform-manager",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".webpack/main",

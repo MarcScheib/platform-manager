@@ -6,7 +6,7 @@ import Secrets from './modules/secrets/secrets';
 import Servers from './modules/servers/servers';
 import Tenants from './modules/tenants/tenants';
 import WorkspacesOverview from './modules/workspaces/overview';
-import { TipManager } from './tip-manager';
+import { PlatformManager } from './platform-manager';
 
 export function Fallback() {
   return <p>Performing initial data "load"</p>;
@@ -28,7 +28,7 @@ export function RootErrorBoundary() {
 export const router = createHashRouter([
   {
     path: '/',
-    element: <TipManager />,
+    element: <PlatformManager />,
     errorElement: <RootErrorBoundary />,
     children: [
       {

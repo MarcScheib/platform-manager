@@ -5,7 +5,7 @@ import { ServersResource } from './types/servers';
 import { TenantsResource } from './types/tenants';
 import { WorkspacesResource } from './types/workspaces';
 
-export interface TipManagerResource {
+export interface PlatformManagerResource {
   modules: ModulesResource;
   requirements: RequirementsResource;
   secrets: SecretsResource;

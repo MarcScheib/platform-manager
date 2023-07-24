@@ -1,21 +1,21 @@
-import { TipManagerResource } from '../shared/api';
+import { PlatformManagerResource } from '../shared/api';
 import { BaseEntity, CrudResource } from '../shared/types/base';
 
 declare global {
   interface Window {
-    tipmanager: TipManagerResource;
+    manager: PlatformManagerResource;
   }
 }
 
 export class BaseResource {
-  private _base: TipManagerResource;
+  private _base: PlatformManagerResource;
 
   get base() {
     return this._base;
   }
 
   constructor() {
-    this._base = window.tipmanager;
+    this._base = window.manager;
   }
 }
 
