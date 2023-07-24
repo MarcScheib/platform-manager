@@ -22,7 +22,6 @@ export default function Servers() {
   const [add, setAdd] = useState<boolean>(false);
   const [servers, setServers] = useState<Server[]>([]);
   useEffect(() => {
-    console.log('load servers');
     service.read().then(servers => setServers(servers));
   }, []);
   const createServer = (server: Server) =>
