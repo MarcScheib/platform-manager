@@ -6,8 +6,12 @@ on:
       - main
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
 
     env:
       node-version: 18
