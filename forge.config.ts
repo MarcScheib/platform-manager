@@ -24,7 +24,8 @@ const config: ForgeConfig = {
           name: 'platform-manager'
         },
         prerelease: false,
-        draft: true
+        draft: false,
+        tagPrefix: ''
       }
     }
   ],
