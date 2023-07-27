@@ -45,6 +45,13 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT_FOR_ACTIONS_TOKEN }}
+          GIT_AUTHOR_NAME: Marc Scheib
+          GIT_AUTHOR_EMAIL: marc.scheib@cycrilabs.com
+        run: npx semantic-release
+
       - name: Publish
         run: npm run publish
         env:
