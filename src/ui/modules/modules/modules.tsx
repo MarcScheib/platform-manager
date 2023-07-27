@@ -1,3 +1,17 @@
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 export default function Modules() {
-  return <h1>Modules</h1>;
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        mb: 2,
+      }}
+    >
+      <Typography variant="h5">Modules</Typography>
+    </Box>
+  );
 }
