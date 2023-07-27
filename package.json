@@ -1,7 +1,7 @@
 {
   "name": "platform-manager",
   "productName": "platform-manager",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Platform manager for microservice development",
   "main": ".webpack/main",
   "scripts": {
