@@ -1,15 +1,16 @@
 import ArrowRight from '@mui/icons-material/ArrowRight';
 import EngineeringIcon from '@mui/icons-material/Engineering';
+import GroupIcon from '@mui/icons-material/Group';
 import Home from '@mui/icons-material/Home';
 import KeyIcon from '@mui/icons-material/Key';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Settings from '@mui/icons-material/Settings';
+import StorageIcon from '@mui/icons-material/Storage';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import IconButton from '@mui/material/IconButton';import GroupIcon from '@mui/icons-material/Group';
+import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import StorageIcon from '@mui/icons-material/Storage';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -17,7 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const data = [
   { icon: <EngineeringIcon />, label: 'Requirements', to: 'requirements' },
@@ -45,7 +46,10 @@ export function Navigation() {
   const [open, setOpen] = React.useState(true);
 
   return (
-    <Nav component="nav" disablePadding>
+    <Nav
+      component="nav"
+      disablePadding
+    >
       <ListItemButton>
         <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon>
         <ListItemText
@@ -61,8 +65,15 @@ export function Navigation() {
 
       <Divider />
 
-      <ListItem component="div" disablePadding>
-        <ListItemButton sx={{ height: 56 }} component={Link} to="workspaces">
+      <ListItem
+        component="div"
+        disablePadding
+      >
+        <ListItemButton
+          sx={{ height: 56 }}
+          component={Link}
+          to="workspaces"
+        >
           <ListItemIcon>
             <Home color="primary" />
           </ListItemIcon>

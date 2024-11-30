@@ -9,7 +9,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { CSSObject, Theme, ThemeProvider, styled } from '@mui/material/styles';
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router';
 import { Navigation } from './shell/navigation';
 import { theme } from './theme';
 
@@ -91,13 +91,19 @@ export function PlatformManager() {
             </Toolbar>
           </AppBar>
 
-          <Drawer variant="permanent" open={open}>
+          <Drawer
+            variant="permanent"
+            open={open}
+          >
             <Toolbar />
 
             <Navigation />
           </Drawer>
 
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Box
+            component="main"
+            sx={{ flexGrow: 1, p: 3 }}
+          >
             <Toolbar />
 
             <Outlet />

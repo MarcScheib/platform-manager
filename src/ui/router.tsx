@@ -1,4 +1,4 @@
-import { createHashRouter, useRouteError } from 'react-router-dom';
+import { createHashRouter, useRouteError } from 'react-router';
 import Modules from './modules/modules/modules';
 import Overview from './modules/overview/main';
 import Requirements from './modules/requirements/requirements';
@@ -30,6 +30,7 @@ export const router = createHashRouter([
     path: '/',
     element: <PlatformManager />,
     errorElement: <RootErrorBoundary />,
+    hydrateFallbackElement: <Fallback />,
     children: [
       {
         path: 'workspaces',
